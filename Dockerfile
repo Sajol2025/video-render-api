@@ -1,6 +1,6 @@
 FROM python:3.10-slim
 
-# FFmpeg ইন্সটল করা
+# System dependencies & FFmpeg
 RUN apt-get update && apt-get install -y ffmpeg && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
@@ -10,5 +10,5 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-# Render এর Dynamic PORT অনুযায়ী উভিকর্ন রান করার কমান্ড
-CMD uvicorn main:app --host 0.0.0.0 --port ${PORT:-8080}
+# python -m uvicorn ব্যবহার করলে uvicorn not found এরর আর আসবে না
+CMD python -m uvicorn main:app --host 0.0.0.0 --port ${PORT:-8080}
