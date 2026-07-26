@@ -6,3 +6,6 @@ app = FastAPI()
 @app.get("/")
 def read_root():
     return {"message": "Video Render API is running successfully!"}
+@app.head("/")
+def head_root():
+    return OK
