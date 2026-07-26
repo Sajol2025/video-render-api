@@ -1,11 +1,11 @@
 from fastapi import FastAPI
 
-# Uvicorn এই "app" নামটিকেই খুঁজছে
 app = FastAPI()
 
 @app.get("/")
 def read_root():
-    return {"message": "Video Render API is running successfully!"}
+    return {"message": "Video Render API is running"}
+
 @app.head("/")
 def head_root():
-    return OK
+    return {"status": "ok"}
